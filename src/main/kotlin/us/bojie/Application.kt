@@ -3,6 +3,7 @@ package us.bojie
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
+import us.bojie.models.TicTacToeGame
 import us.bojie.plugins.*
 
 fun main() {
@@ -11,8 +12,9 @@ fun main() {
 }
 
 fun Application.module() {
+    val game = TicTacToeGame()
     configureSockets()
     configureSerialization()
     configureMonitoring()
-    configureRouting()
+    configureRouting(game)
 }
